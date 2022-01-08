@@ -361,8 +361,8 @@ impl Fuzzer {
             }
         }
         let mut new_global_bits_count = 0;
-        let global_bitmap = gstate_lock.global_bitmap;
-        for i in res {
+        let global_bitmap = &mut gstate_lock.global_bitmap;
+        for &i in &res {
             if global_bitmap[i] == 0 {
                 global_bitmap[i] += 1;
                 new_global_bits_count += 1;

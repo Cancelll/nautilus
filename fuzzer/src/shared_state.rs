@@ -54,7 +54,7 @@ impl GlobalSharedState {
         let mut bitmaps = HashMap::new();
         bitmaps.insert(false, vec![0; bitmap_size]);
         bitmaps.insert(true, vec![0; bitmap_size]);
-        let mut global_bitmap = vec![0; bitmap_size];
+        let global_bitmap = vec![0; bitmap_size];
         return GlobalSharedState {
             queue,
             global_bitmap,
