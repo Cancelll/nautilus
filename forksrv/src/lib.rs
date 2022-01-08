@@ -223,7 +223,7 @@ impl ForkServer {
                     CString::from_raw(strerror(*__errno_location()))
                 );
             }
-            return (shm_id, trace_bits as *mut [u8; 1 << 16]);
+            return (shm_id, trace_bits as *mut [u8; 1 << 20]);
         }
     }
 }
