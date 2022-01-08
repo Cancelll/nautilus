@@ -360,8 +360,15 @@ impl Fuzzer {
                 //println!("Added new bit to bitmap. Is Crash: {:?}; Added bit: {:?}", is_crash, i);
             }
         }
-
-        gstate_lock.total_found_bits += res.len() as u64;
+        let mut new_global_bits_count = 0;
+        let global_bitmap = gstate_lock.global_bitmap;
+        for i in res {
+            if global_bitmap[i] == 0 {
+                global_bitmap[i] += 1;
+                new_global_bits_count += 1;
+            }
+        }
+        gstate_lock.total_found_bits += new_global_bits_count as u64;
 
         if res.len() > 0 {
             //print!("New path found:\nNew bits: {:?}\n", res);

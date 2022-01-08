@@ -20,6 +20,7 @@ use std::collections::HashMap;
 pub struct GlobalSharedState {
     pub queue: Queue,
     //false for not crashing input. True for crashing inputs
+    pub global_bitmap: Vec<u8>,
     pub bitmaps: HashMap<bool, Vec<u8>>,
     pub execution_count: u64,
     pub average_executions_per_sec: u32,
@@ -53,8 +54,10 @@ impl GlobalSharedState {
         let mut bitmaps = HashMap::new();
         bitmaps.insert(false, vec![0; bitmap_size]);
         bitmaps.insert(true, vec![0; bitmap_size]);
+        let mut global_bitmap = vec![0; bitmap_size];
         return GlobalSharedState {
             queue,
+            global_bitmap,
             bitmaps,
             execution_count: 0,
             average_executions_per_sec: 0,
