@@ -368,6 +368,7 @@ fn main() {
                     let last_timeout;
                     let total_found_asan;
                     let total_found_sig;
+                    let total_found_bits;
                     {
                         let shared_state = global_state.lock().expect("RAND_597319831");
                         execution_count = shared_state.execution_count;
@@ -385,6 +386,7 @@ fn main() {
                         last_timeout = shared_state.last_timeout.clone();
                         total_found_asan = shared_state.total_found_asan;
                         total_found_sig = shared_state.total_found_sig;
+                        total_found_bits = shared_state.total_found_bits;
                     }
                     let secs = start_time.elapsed().as_secs();
                     let minutes = secs / 60;
@@ -455,6 +457,10 @@ fn main() {
                     println!(
                         "Total SIG crashes:        {}                              ",
                         total_found_sig
+                    );
+                    println!(
+                        "Total bits covered:       {}                              ",
+                        total_found_bits
                     );
                     println!("------------------------------------------------------    ");
                     println!(

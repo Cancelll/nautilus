@@ -43,6 +43,7 @@ pub struct GlobalSharedState {
     pub state_saved: String,
     pub total_found_asan: u64,
     pub total_found_sig: u64,
+    pub total_found_bits: u64,
 }
 
 impl GlobalSharedState {
@@ -77,6 +78,7 @@ impl GlobalSharedState {
             state_saved: String::from("State not saved yet."),
             total_found_asan: 0,
             total_found_sig: 0,
+            total_found_bits: 0,
         };
     }
 }

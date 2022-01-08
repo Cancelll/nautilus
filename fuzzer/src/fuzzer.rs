@@ -357,6 +357,7 @@ impl Fuzzer {
             if (run_bitmap[i] != 0) && (*elem == 0) {
                 *elem |= run_bitmap[i];
                 res.push(i);
+                gstate_lock.total_found_bits += 1;
                 //println!("Added new bit to bitmap. Is Crash: {:?}; Added bit: {:?}", is_crash, i);
             }
         }
